@@ -1,0 +1,66 @@
+.table {
+  margin: 0 auto;
+  max-width: 1200px;
+  text-align: center;
+
+  thead {
+    tr {
+      th {
+        background: $blue;
+        color: #fff;
+        cursor: pointer;
+        min-width: 50px;
+
+        &:hover {
+          background: darken($blue, 10%);
+        }
+
+        &.ascending,
+        &.descending {
+          background: $orange;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      &.season {
+        background-color: $silver;
+        border-top: 3px solid;
+        font-weight: bold;
+      }
+    }
+  }
+
+  @media screen and (max-width: 760px) {
+    thead,
+    tbody {
+      tr:not(.season) {
+        th,
+        td {
+          &:first-of-type,
+          &:nth-of-type(2) {
+            background: $silver;
+            position: sticky;
+            left: 0;
+            z-index: 10;
+          }
+
+          &:nth-of-type(2) {
+            left: 69px;
+          }
+        }
+      }
+
+      tr.season {
+        td:first-of-type {
+          background: $silver;
+          position: sticky;
+          left: 0;
+          z-index: 10;
+        }
+      }
+    }
+  }
+}

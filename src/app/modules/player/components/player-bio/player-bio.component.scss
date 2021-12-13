@@ -1,0 +1,54 @@
+@import 'src/assets/theme/variables';
+
+:host {
+  .row {
+    justify-content: space-around;
+
+    .headshot,
+    .teamlogo {
+      text-align: center;
+    }
+
+    @media screen and (max-width: 576px) {
+      .headshot {
+        img {
+          width: 125px;
+        }
+      }
+    }
+    
+    &.social-media {
+      color: #fff;
+      flex-direction: row;
+      justify-content: center;
+      padding: 10px 0;
+
+      &:hover,
+      &:visited {
+        color: #fff;
+      }
+    }
+
+    &.playerDetails {
+      & > * {
+        padding-bottom: 10px;
+      }
+
+      .col-4 {
+        p {
+          font-size: 14px;
+        }
+      }
+
+      p {
+        font-size: 16px;
+        margin: 0;
+      }
+
+      .title {
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

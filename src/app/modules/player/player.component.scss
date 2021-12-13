@@ -1,0 +1,14 @@
+@import 'src/assets/theme/variables';
+
+.row.bio {
+  background: linear-gradient(180deg, $blue, $orange);
+  color: #fff;
+  margin: 0 -1500px 2em;
+  padding: 1em 1500px;
+
+  @media screen and (max-width: 1200px) {
+    margin: 0 auto 2em;
+    max-width: 100%;
+    padding: 1em 0;
+  }
+}

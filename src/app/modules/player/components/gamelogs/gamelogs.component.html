@@ -1,0 +1,163 @@
+<div class="card shadow no-flex">
+    <h2>Game Logs</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered border-dark">
+            <thead>
+                <tr>
+                    <th [class.ascending]="stat == 'date' && ascending" [class.descending]="stat == 'date' && !ascending" class="date" (click)="sortGames('date')">
+                        Date
+                        <svg *ngIf="stat == 'date' && !ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                        </svg>
+                        
+                        <svg *ngIf="stat == 'date' && ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                    </th>
+                    <th [class.ascending]="stat == 'opp' && ascending" [class.descending]="stat == 'opp' && !ascending" class="opp" (click)="sortGames('opp')">
+                        Opp
+                        <svg *ngIf="stat == 'opp' && !ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                        </svg>
+                        
+                        <svg *ngIf="stat == 'opp' && ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                    </th>
+                    <th [class.ascending]="stat == 'shots' && ascending" [class.descending]="stat == 'shots' && !ascending" class="shots" (click)="sortGames('shots')">
+                        Shots
+                        <svg *ngIf="stat == 'shots' && !ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                        </svg>
+                        
+                        <svg *ngIf="stat == 'shots' && ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                    </th>
+                    <th [class.ascending]="stat == 'shotsOnGoal' && ascending" [class.descending]="stat == 'shotsOnGoal' && !ascending" class="shotsOnGoal" (click)="sortGames('shotsOnGoal')">
+                        SoG
+                        <svg *ngIf="stat == 'shotsOnGoal' && !ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                        </svg>
+                        
+                        <svg *ngIf="stat == 'shotsOnGoal' && ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                    </th>
+                    <th [class.ascending]="stat == 'shotsOnGoalPct' && ascending" [class.descending]="stat == 'shotsOnGoalPct' && !ascending" class="shotsOnGoalPct" (click)="sortGames('shotsOnGoalPct')"tooltip="Shots on Goal Percentage" container="body" placement="bottom">
+                        SoG %
+                        <svg *ngIf="stat == 'shotsOnGoalPct' && !ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                        </svg>
+                        
+                        <svg *ngIf="stat == 'shotsOnGoalPct' && ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                    </th>
+                    <th [class.ascending]="stat == 'goals' && ascending" [class.descending]="stat == 'goals' && !ascending" class="goals" (click)="sortGames('goals')">
+                        Goals
+                        <svg *ngIf="stat == 'goals' && !ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                        </svg>
+                        
+                        <svg *ngIf="stat == 'goals' && ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                    </th>
+                    <th [class.ascending]="stat == 'shotPct' && ascending" [class.descending]="stat == 'shotPct' && !ascending" class="shotPct" (click)="sortGames('shotPct')">
+                        Shot %
+                        <svg *ngIf="stat == 'shotPct' && !ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                        </svg>
+                        
+                        <svg *ngIf="stat == 'shotPct' && ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                    </th>
+                    <th [class.ascending]="stat == 'assists' && ascending" [class.descending]="stat == 'assists' && !ascending" class="assists" (click)="sortGames('assists')">
+                        Assists
+                        <svg *ngIf="stat == 'assists' && !ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                        </svg>
+                        
+                        <svg *ngIf="stat == 'assists' && ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                    </th>
+                    <th [class.ascending]="stat == 'points' && ascending" [class.descending]="stat == 'points' && !ascending" class="points" (click)="sortGames('points')">
+                        Points
+                        <svg *ngIf="stat == 'points' && !ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                        </svg>
+                        
+                        <svg *ngIf="stat == 'points' && ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                    </th>
+                    <th [class.ascending]="stat == 'causedTurnovers' && ascending" [class.descending]="stat == 'causedTurnovers' && !ascending" class="causedTurnovers" (click)="sortGames('causedTurnovers')">
+                        Caused TO
+                        <svg *ngIf="stat == 'causedTurnovers' && !ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                        </svg>
+                        
+                        <svg *ngIf="stat == 'causedTurnovers' && ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                    </th>
+                    <th [class.ascending]="stat == 'turnovers' && ascending" [class.descending]="stat == 'turnovers' && !ascending" class="turnovers" (click)="sortGames('turnovers')">
+                        TO
+                        <svg *ngIf="stat == 'turnovers' && !ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                        </svg>
+                        
+                        <svg *ngIf="stat == 'turnovers' && ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                    </th>
+                    <th [class.ascending]="stat == 'groundBalls' && ascending" [class.descending]="stat == 'groundBalls' && !ascending" class="groundBalls" (click)="sortGames('groundBalls')" tooltip="Ground Balls" container="body" placement="bottom">
+                        GB
+                        <svg *ngIf="stat == 'groundBalls' && !ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                        </svg>
+                        
+                        <svg *ngIf="stat == 'groundBalls' && ascending" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                        </svg>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let game of gameLogs">
+                    <td>{{game.playerEventStats.date | date: 'shortDate'}}</td>
+                    <td>{{game.playerEventStats.opp}}</td>
+                    <td>{{game.playerEventStats.shots}}</td>
+                    <td>{{game.playerEventStats.shotsOnGoal}}</td>
+                    <td>{{game.playerEventStats.shotsOnGoalPct | percent}}</td>
+                    <td>{{game.playerEventStats.goals}}</td>
+                    <td>{{game.playerEventStats.shotPct | percent}}</td>
+                    <td>{{game.playerEventStats.assists}}</td>
+                    <td>{{game.playerEventStats.points}}</td>
+                    <td>{{game.playerEventStats.causedTurnovers}}</td>
+                    <td>{{game.playerEventStats.turnovers}}</td>
+                    <td>{{game.playerEventStats.groundBalls}}</td>
+                </tr>
+
+                <tr *ngIf="season != null" class="season">
+                    <td colspan="2">2020 Season Totals</td>
+                    <td>{{season.shots}}</td>
+                    <td>{{season.shotsOnGoal}}</td>
+                    <td>{{season.shotsOnGoalPct | percent}}</td>
+                    <td>{{season.goals}}</td>
+                    <td>{{season.shotPct | percent}}</td>
+                    <td>{{season.assists}}</td>
+                    <td>{{season.points}}</td>
+                    <td>{{season.causedTurnovers}}</td>
+                    <td>{{season.turnovers}}</td>
+                    <td>{{season.groundBalls}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

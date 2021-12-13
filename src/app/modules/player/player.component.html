@@ -1,0 +1,49 @@
+<ng-template [ngIf]="isLoading == false">
+    <div *ngIf="playerInfo != null" class="row bio">
+        <app-player-bio [playerInfo]="playerInfo"></app-player-bio>
+    </div>
+
+    <div class="container-lg player-page">
+        <div *ngIf="goals.length > 0" class="row stat-graph">
+            <app-linegraph
+                [graphTitle]="'Shot and Turnover Statistics'"
+                [dataSet1]="goals"
+                [dataSet1Name]="'Goals'"
+                [dataSet2]="shots"
+                [dataSet2Name]="'Shots'"
+                [dataSet3]="shotsOnGoal"
+                [dataSet3Name]="'Shots on Goal'"
+                [dataSet4]="turnovers"
+                [dataSet4Name]="'Turnovers'">
+            </app-linegraph>
+        </div>
+
+        <div *ngIf="goals.length == 0" class="row stat-graph">
+            <div class="card shadow">
+                <h2>No Data to Graph.</h2>
+            </div>
+        </div>
+
+        <div *ngIf="gameLogs.length > 0" class="row gamelogs">
+            <app-gamelogs 
+                [gameLogs]="gameLogs" 
+                [season]="season" 
+                [team]="team">
+            </app-gamelogs>
+        </div>
+
+        <div *ngIf="gameLogs.length == 0" class="row gamelogs">
+            <div class="card shadow no-flex">
+                <h2>No Current Game Logs.</h2>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<div *ngIf="isLoading == true">
+    <div class="container-lg">
+        <div class="card">
+            <h2>Player Info Loading...</h2>
+        </div>
+    </div>
+</div>
